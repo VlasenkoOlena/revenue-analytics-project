@@ -76,7 +76,7 @@ ORDER BY revenue DESC;
 ---
 
 # Dashboard
-![Dashboard](dashboard.png)
+![Dashboard](images/dashboard.png)
 
 The dataset was visualized using Tableau.
 
