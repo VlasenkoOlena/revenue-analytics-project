@@ -32,6 +32,23 @@ JOIN dim_plans p
 GROUP BY p.plan_name
 ORDER BY revenue DESC;
 
+-- ARPU
+SELECT 
+    SUM(amount) / COUNT(DISTINCT subscription_id) AS arpu
+FROM fact_payments;
+
+-- Revenue per customer
+SELECT 
+    c.name,
+    SUM(f.amount) AS customer_revenue
+FROM fact_payments f
+JOIN fact_subscriptions s
+    ON f.subscription_id = s.subscription_id
+JOIN dim_customers c
+    ON s.customer_id = c.customer_id
+GROUP BY c.name
+ORDER BY customer_revenue DESC;
+
 SELECT
     f.payment_date,
     f.amount,

@@ -11,6 +11,12 @@ The project includes:
 - Dashboard visualization in Tableau
 
 ---
+## Tech Stack
+
+- PostgreSQL
+- SQL
+- Tableau
+- GitHub
 
 # Data Model
 
@@ -71,6 +77,13 @@ JOIN dim_plans p
     ON s.plan_id = p.plan_id
 GROUP BY p.plan_name
 ORDER BY revenue DESC;
+```
+
+### ARPU
+```sql
+SELECT 
+    SUM(amount) / COUNT(DISTINCT subscription_id) AS arpu
+FROM fact_payments;
 ```
 
 ---
